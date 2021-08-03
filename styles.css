@@ -8,10 +8,11 @@ body {
     text-align:center;
 }
 
-.cardContainer {
+.bankContainer {
     float:left;
     width:100px;
     border: 2px solid red;
+    padding-left: 10px;
 }
 
 .workContainer {
@@ -21,9 +22,19 @@ body {
     border: 2px solid black;
 }
 
-#right {
+.laptopContainer {
     float:right;
     width:100px;
+    border: 2px solid black;
+    padding-right: 10px;
+}
+
+.buyLaptopContainer    {
+    border: 2px solid black;
+}
+
+#laptops {
+    width: 20px;
 }
 
 button {
