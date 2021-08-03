@@ -13,7 +13,8 @@
         <div class="bankContainer" id="card">
             <h3>Måns Regin</h3>
             <p id="balance">Balance: 0.0</p>
-            <button type="button" id="getALoanButton" >Get a loan</button>
+            <p id="outstandingLoan" hidden>Outstanding loan: 0.0</p>
+            <button type="button" id="getALoanButton">Get a loan</button>
         </div>
 
         <div class="workContainer" id="work">
@@ -21,18 +22,21 @@
             <p id="pay">Pay: 0.0</p>
             <button id=bankButton>Bank</button>
             <button id=workButton>Work</button>
+            <button type="button" id="repayButton" hidden>Repay Loan</button>
         </div>
 
-        <div class="laptopContainer">
+        <div class="laptopContainer" id=laptopContainer>
             <h3>Laptops</h3>
             <select name="laptops" id="laptops"></select>
-            <p id="features">Features: </p>
+            <h3 id="features">Features: <h3>
+            <ul id=featureList></ul>
         </div>
 
         <div class="buyLaptopContainer">
             <h3 id="laptopType">Current computer</h3>
-            <p id="description">Some description</p>
-            <h4 id="price">price</h4>
+            <p id="description"></p>
+            <h4 id="price">Price: </h4>
+            <img width="500" height="500" id="img"></img>
             <button id="buyNowButton">BUY NOW</button>
         </div>
 
