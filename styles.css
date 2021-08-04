@@ -1,43 +1,138 @@
 body {
-    background-color: powderblue;
+    background-color: white;
+    margin: 0px;
+}
+
+button {
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+    font-size: 11px;
+    text-align: left;
+}
+
+div {
+    border-radius: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#navbar {
+    background-color: #333;
+    overflow: hidden;
+    border-radius: 0px;
+}
+
+.mainContainer {
+    width:100%;
+    text-align:center;
+    margin-top: 2%;
 }
 
 .container {
-    border: 2px solid green;
-    width:100%;
-    text-align:center;
+    width:200px;
+    height: 280px;
+    background-color: lightgrey;
 }
 
-.bankContainer {
+#bankContainer {
     float:left;
-    width:100px;
-    border: 2px solid red;
-    padding-left: 100px;
+    margin-left: 10%;
 }
 
-.workContainer {
+#workContainer {
+    position: relative;
     display: inline-block;
     margin:0 auto;
-    width:100px;
-    border: 2px solid black;
 }
 
-.laptopContainer {
+#laptopContainer {
     float:right;
-    width:100px;
-    border: 2px solid black;
-    padding-right: 100px;
+    margin-right: 10%;
 }
 
 .buyLaptopContainer    {
-    border: 2px solid black;
-    padding-top: 20px;
+    position: relative;
+    text-align: left;
+    margin-top: 20px;
+    height: 300px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: lightgrey;
+}
+
+#description {
+    position: absolute;
+    margin-left: 42%;
+    margin-top: 25%;
+}
+
+#price {
+    position: absolute;
+    margin-top: 0%;
 }
 
 #laptops {
     width: 150px;
 }
 
-button {
-    padding: 10px 30px;
+#laptopType {
+    position: absolute;
+    margin-left: 42% ;
+    margin-top: 15%;
 }
+
+#img {
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+#repayButton {
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: lightblue;
+}
+
+#buyNowButton {
+    margin-top: 25%;
+}
+
+#getALoanButton {
+    background-color: lime;
+}
+
+#bankButton {
+    background-color: yellow;
+}
+
+#workButton {
+    background-color: blue;
+}
+
+#desc {
+    position: absolute;
+    margin-left: 20%;
+    width: 50%;
+}
+
+#prcingAndBuy {
+    position: absolute;
+    margin-left: 75%;
+    margin-top: 5%;
+    width: 25%;
+}
+
