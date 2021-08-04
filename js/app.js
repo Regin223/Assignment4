@@ -1,20 +1,20 @@
-//Declare all elements fot the bank container
+//Declare all elements for the bank container
 const balance = document.getElementById("balance");
 const getALoanButton = document.getElementById("getALoanButton");
 const outstandingLoan = document.getElementById("outstandingLoan");
 
-//Declare all elements fot the work container
+//Declare all elements for the work container
 const pay = document.getElementById("pay");
 const bankButton = document.getElementById("bankButton");
 const workButton = document.getElementById("workButton");
 const repayLoanButton = document.getElementById("repayButton");
 
-//Declare all elements fot the laptop container
+//Declare all elements for the laptop container
 const laptops = document.getElementById("laptops");
 const features = document.getElementById("features");
 const featureList = document.getElementById("featureList");
 
-//Declare all elements fot the buy laptop container
+//Declare all elements for the buy laptop container
 const laptopType = document.getElementById("laptopType");
 const description = document.getElementById("description");
 const price = document.getElementById("price");
