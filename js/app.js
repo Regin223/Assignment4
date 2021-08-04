@@ -16,14 +16,16 @@ const laptopType = document.getElementById("laptopType");
 const description = document.getElementById("description");
 const price = document.getElementById("price");
 const img = document.getElementById("img");
-const buyNowButton = document.getElementById("buyKnowButton");
+const buyLaptopButton = document.getElementById("buyNowButton");
 
 let totalBalance = 0.0;
 let totalPay = 0.0;
 let totalOutstandingLoan = 0.0;
 let hasBankLoan = false;
+let needsToBuyLaptopToTakeLoan = false;
 let laptopsList = [];
-fetchDataAsyc()
+let currentLaptop = [];
+fetchDataAsyc();
 
 async function fetchDataAsyc(){
     try {
@@ -31,18 +33,17 @@ async function fetchDataAsyc(){
         const data = await response.json()
         laptopsList = data;
         addLaptopsListToDropDown(laptopsList);
+        currentLaptop = laptopsList[0];
         laptopsList[0].specs.forEach(x =>  {
             const featureElement = document.createElement("li");
             featureElement.appendChild(document.createTextNode(x));
             featureList.appendChild(featureElement);
         });
-        updateCurrentComputer(laptopsList[0]);
-        
+        updateCurrentComputer(laptopsList[0]); 
     }
     catch(error){
         console.log(error);
     }
-   
 }
 
 const addLaptopsListToDropDown = (laptopsList) => {
@@ -59,14 +60,15 @@ const addLaptopToDropDown = (laptop) => {
 const selectedLaptop = e => {
     const selectedLaptop = laptopsList[e.target.selectedIndex];
     featureList.innerText = "";
+    currentLaptop = selectedLaptop;
     createFeatureList(selectedLaptop.specs);
     updateCurrentComputer(selectedLaptop);
-
 } 
+
 const createFeatureList = (featureList) => {
     featureList.forEach(x => addFeatureToList(x))
-
 }
+
 const addFeatureToList = (feature) => {
     const featureElement = document.createElement("li");
     featureElement.appendChild(document.createTextNode(feature));
@@ -74,20 +76,28 @@ const addFeatureToList = (feature) => {
 }
 
 const updateCurrentComputer = (laptop) => {
+    laptopType.innerText = laptop.title;
     price.innerText = `Price: ${laptop.price}`;
     description.innerText =  laptop.description;
     img.src = `https://noroff-komputer-store-api.herokuapp.com/${laptop.image}`;
-
 }
+const imageNotFound = (image) => {
+    image.onerror = "";
+    img.src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png";
+    return true;
+} 
 
 const getALoan = () => {
     const loan = parseFloat(prompt("Enter loan amount: "));
-    if (loan <= totalBalance*2 && !hasBankLoan){
+    if (loan <= totalBalance*2 && !hasBankLoan && !needsToBuyLaptopToTakeLoan){
         outstandingLoan.style.display = "block";
         repayLoanButton.style.display = "block";
         totalOutstandingLoan = loan;
+        totalBalance += loan;
         hasBankLoan = true;
+        needsToBuyLaptopToTakeLoan = true;
         updateOutstandingLoanValue();
+        updateBalanceValue();
     }
     else
     {
@@ -144,20 +154,35 @@ const transerPayToBalance = () => {
     
 }
 
+const buyLaptop = () => {
+    if(totalBalance < currentLaptop.price){
+        alert("To low balance to buy this laptop");
+    }
+    else 
+    {
+        totalBalance -= currentLaptop.price;
+        needsToBuyLaptopToTakeLoan = false;
+        alert(`You now own the ${currentLaptop.title} laptop`);
+        updateBalanceValue();
+    }
+}
+
 function updatePayValue(){
     pay.innerText = `Pay: ${totalPay}`;
 }
+
 function updateBalanceValue(){
     balance.innerText = `Balance: ${totalBalance}`;
 }
+
 function updateOutstandingLoanValue(){
     outstandingLoan.innerText = `Oustanding Loan: ${totalOutstandingLoan}`;
 }
-
 
 getALoanButton.addEventListener("click",getALoan);
 workButton.addEventListener("click",paySalary);
 bankButton.addEventListener("click",transerPayToBalance);
 repayLoanButton.addEventListener("click",repayLoan);
 laptops.addEventListener("change",selectedLaptop);
+buyLaptopButton.addEventListener("click",buyLaptop);
 
